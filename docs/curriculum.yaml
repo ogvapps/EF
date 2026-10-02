@@ -1,0 +1,2957 @@
+# =============================================================================
+# CURRÍCULO COMPLETO EF App — Datos estructurados listos para Firestore
+# 1º-4º ESO · LOMLOE · Extremadura
+# =============================================================================
+# Formato: YAML
+# Uso:  importar a Firestore mediante script (seed)
+# =============================================================================
+
+meta:
+  version: "1.0.0"
+  created: "2026-05-28"
+  curriculum: "LOMLOE Extremadura"
+  app_name: "EF Quest"
+
+# =============================================================================
+# CONFIGURACIÓN GLOBAL DE GAMIFICACIÓN
+# =============================================================================
+gamification:
+  xp_per_level: 500
+  max_level: 100
+  max_attributes: 100
+
+  # XP values base
+  xp:
+    lesson_complete: 25
+    quiz_perfect: 50
+    challenge_pass: 50
+    challenge_3stars: 100
+    minigame_pass: 30
+    minigame_perfect: 60
+    boss_pass: 150
+    boss_perfect: 300
+    daily_streak_bonus: 10
+    weekly_streak_bonus: 100
+
+  # Monedas
+  coins:
+    lesson: 5
+    challenge: 10
+    minigame: 8
+    boss: 25
+    streak_day: 2
+
+  # Rangos (tiers de avatar)
+  tiers:
+    rookie:
+      min_level: 0
+      min_xp: 0
+    amateur:
+      min_level: 10
+      min_xp: 5000
+    competidor:
+      min_level: 25
+      min_xp: 12500
+    capitan:
+      min_level: 45
+      min_xp: 22500
+    elite:
+      min_level: 70
+      min_xp: 35000
+
+  # Atributos
+  attributes:
+    fuerza:
+      icon: "💪"
+      color: "#FF4444"
+    resistencia:
+      icon: "❤️"
+      color: "#FF6B35"
+    estrategia:
+      icon: "🧠"
+      color: "#4A90D9"
+    cooperacion:
+      icon: "🤝"
+      color: "#50C878"
+    salud:
+      icon: "🍎"
+      color: "#32CD32"
+    liderazgo:
+      icon: "⭐"
+      color: "#FFD700"
+
+# =============================================================================
+# CURSOS
+# =============================================================================
+courses:
+
+  # ===========================================================================
+  # 1º ESO
+  # ===========================================================================
+  1_eso:
+    name: "1º ESO"
+    short: "1ESO"
+    objective: "Adaptación a la Educación Física de secundaria, desarrollo motor básico y creación de hábitos saludables."
+    avatar_init: "rookie"
+
+    trimesters:
+
+      # ---- T1 ----
+      trimester_1:
+        name: "Conozco mi cuerpo"
+        narrative: "El alumno despierta como un explorador físico en un mundo nuevo. Debe aprender a escuchar su cuerpo, moverse con control y trabajar en equipo para superar los primeros desafíos."
+
+        units:
+
+          # ── UD1 ──
+          - id: "1eso_ud1"
+            order: 1
+            title: "Bienvenido a tu cuerpo"
+            weeks: 3
+            color: "#4CAF50"
+            icon: "🏃"
+            saber_basico:
+              - "condición física básica"
+              - "higiene"
+              - "calentamiento"
+              - "frecuencia cardíaca"
+              - "hábitos saludables"
+            competencias:
+              - "CE1: Adoptar hábitos saludables"
+              - "CE2: Conocer el cuerpo y sus respuestas"
+              - "CE5: Autorregular emociones"
+            attribute_focus:
+              fuerza: 1
+              resistencia: 2
+              estrategia: 1
+              cooperacion: 2
+              salud: 5
+              liderazgo: 1
+            boss_name: "El Sedentarismo"
+            total_xp: 520
+            required_xp: 300
+
+            lessons:
+              - id: "1eso_ud1_l01"
+                order: 1
+                title: "¿Qué es la actividad física?"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+                video_url: "lessons/1eso_ud1_l01.mp4"
+                summary: "Diferencia entre ejercicio, deporte y actividad física. Beneficios para cuerpo y mente."
+
+              - id: "1eso_ud1_l02"
+                order: 2
+                title: "Tu cuerpo en movimiento"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+                content: "Conoce los principales sistemas: muscular, óseo, cardiovascular. ¿Qué pasa cuando te mueves?"
+
+              - id: "1eso_ud1_l03"
+                order: 3
+                title: "Midiendo tu motor"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+                quiz:
+                  min_pass: 70
+                  questions:
+                    - q: "¿Qué es la frecuencia cardíaca?"
+                      options: ["Las veces que respiras por minuto", "Las veces que el corazón late por minuto", "La temperatura del cuerpo", "La cantidad de sudor"]
+                      correct: 1
+                    - q: "¿Cuál es un beneficio de la actividad física?"
+                      options: ["Aumenta el estrés", "Mejora el sueño y el ánimo", "Reduce la fuerza", "Aumenta el cansancio extremo"]
+                      correct: 1
+                    - q: "¿Cuándo debes hacer un calentamiento?"
+                      options: ["Después del ejercicio", "Antes del ejercicio", "Solo si hace frío", "Nunca"]
+                      correct: 1
+                    - q: "¿Qué pulso se considera reposo normal?"
+                      options: ["120-140 lpm", "60-100 lpm", "0-30 lpm", "150-180 lpm"]
+                      correct: 1
+
+              - id: "1eso_ud1_l04"
+                order: 4
+                title: "Hábitos que suman"
+                type: "flashcard"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+                cards:
+                  - front: "¿Cuántas horas de sueño necesita un adolescente?"
+                    back: "8-10 horas diarias"
+                  - front: "¿Cada cuánto deberías beber agua haciendo ejercicio?"
+                    back: "Cada 15-20 minutos"
+                  - front: "¿Qué es el sedentarismo?"
+                    back: "Estar sentado más de 2h seguidas sin movimiento"
+                  - front: "¿Cuántos pasos diarios se recomiendan?"
+                    back: "Al menos 8.000-10.000 pasos"
+
+            challenges:
+              - id: "1eso_ud1_c01"
+                order: 1
+                title: "Toma de pulsaciones"
+                type: "heart_rate"
+                difficulty: "facil"
+                goal_type: "seconds"
+                goal_value: 60
+                min_value: 30
+                max_value: 120
+                xp: 50
+                coins: 10
+                intro: "Encuentra tu pulso en la muñeca o el cuello. Cuenta los latidos durante 15 segundos y multiplica por 4."
+
+              - id: "1eso_ud1_c02"
+                order: 2
+                title: "Calentamiento exprés"
+                type: "mobility"
+                difficulty: "facil"
+                goal_type: "reps"
+                goal_value: 8
+                min_value: 5
+                max_value: 12
+                xp: 50
+                coins: 10
+                intro: "Realiza 8 ejercicios de movilidad articular: cuello, hombros, muñecas, cadera, rodillas, tobillos."
+
+              - id: "1eso_ud1_c03"
+                order: 3
+                title: "6000 pasos"
+                type: "steps"
+                difficulty: "medio"
+                goal_type: "steps"
+                goal_value: 6000
+                min_value: 4000
+                max_value: 10000
+                xp: 75
+                coins: 15
+                intro: "Camina durante el día hasta alcanzar 6000 pasos. Tu contador lo registra automáticamente."
+
+            minigames:
+              - id: "1eso_ud1_m01"
+                order: 1
+                title: "Monta tu calentamiento"
+                type: "puzzle"
+                config:
+                  rounds: 5
+                  time_per_round: 15
+                  difficulty_levels: 3
+                xp: 30
+                coins: 8
+
+            boss:
+              id: "1eso_ud1_boss"
+              title: "Jefe Final: El Sedentarismo"
+              description: "Demuestra que has aprendido a cuidar tu cuerpo. Supera 3 pruebas: calentamiento completo, quiz de hábitos, y 15 min de actividad continua."
+              xp: 200
+              coins: 30
+              challenges:
+                - type: "quiz"
+                  min_pass: 80
+                  questions_count: 10
+                - type: "mobility"
+                  exercises: 10
+                - type: "cardio"
+                  minutes: 15
+
+          # ── UD2 ──
+          - id: "1eso_ud2"
+            order: 2
+            title: "Domino mi movimiento"
+            weeks: 4
+            color: "#2196F3"
+            icon: "🤸"
+            saber_basico:
+              - "coordinación"
+              - "equilibrio"
+              - "lateralidad"
+              - "habilidades motrices básicas"
+            competencias:
+              - "CE3: Resolver problemas motores"
+              - "CE4: Coordinarse con otros"
+            attribute_focus:
+              fuerza: 2
+              resistencia: 2
+              estrategia: 3
+              cooperacion: 2
+              salud: 2
+              liderazgo: 1
+            boss_name: "El Desequilibrio"
+            total_xp: 600
+            required_xp: 350
+
+            lessons: &lessons_1eso_ud2
+              - id: "1eso_ud2_l01"
+                order: 1
+                title: "Coordinación: tu superpoder"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "1eso_ud2_l02"
+                order: 2
+                title: "Equilibrio y lateralidad"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "1eso_ud2_l03"
+                order: 3
+                title: "Circuitos motores"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+                quiz:
+                  min_pass: 70
+                  questions:
+                    - q: "¿Qué es la lateralidad?"
+                      options: ["Preferencia por un lado del cuerpo", "Capacidad de saltar", "La flexibilidad", "La respiración"]
+                      correct: 0
+                    - q: "¿Qué habilidad mejora el equilibrio?"
+                      options: ["Estar sentado", "Pararse en un pie", "Correr rápido", "Dormir"]
+                      correct: 1
+
+              - id: "1eso_ud2_l04"
+                order: 4
+                title: "Reflejos y reacción"
+                type: "flashcard"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+            challenges:
+              - id: "1eso_ud2_c01"
+                order: 1
+                title: "Circuito motor"
+                type: "coordination"
+                difficulty: "medio"
+                goal_type: "reps"
+                goal_value: 10
+                xp: 60
+                coins: 12
+
+              - id: "1eso_ud2_c02"
+                order: 2
+                title: "Coordinación musical"
+                type: "mobility"
+                difficulty: "medio"
+                goal_type: "seconds"
+                goal_value: 120
+                xp: 60
+                coins: 12
+
+            minigames:
+              - id: "1eso_ud2_m01"
+                order: 1
+                title: "Reflejos"
+                type: "reflex"
+                xp: 30
+                coins: 8
+
+              - id: "1eso_ud2_m02"
+                order: 2
+                title: "Patrón motor"
+                type: "pattern"
+                xp: 30
+                coins: 8
+
+            boss:
+              id: "1eso_ud2_boss"
+              title: "Jefe Final: El Desequilibrio"
+              xp: 200
+              coins: 30
+
+          # ── UD3 ──
+          - id: "1eso_ud3"
+            order: 3
+            title: "Juego en equipo"
+            weeks: 5
+            color: "#FF9800"
+            icon: "⚽"
+            saber_basico:
+              - "cooperación"
+              - "reglas básicas"
+              - "deportes modificados"
+              - "ocupación espacial"
+            competencias:
+              - "CE3: Resolver problemas motores"
+              - "CE4: Interacción social y cooperación"
+            attribute_focus:
+              fuerza: 2
+              resistencia: 2
+              estrategia: 3
+              cooperacion: 5
+              salud: 2
+              liderazgo: 3
+            boss_name: "El Caos"
+            total_xp: 700
+            required_xp: 400
+
+            lessons:
+              - id: "1eso_ud3_l01"
+                order: 1
+                title: "Jugar en equipo"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "1eso_ud3_l02"
+                order: 2
+                title: "Reglas del juego"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "1eso_ud3_l03"
+                order: 3
+                title: "Ocupación espacial"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+              - id: "1eso_ud3_l04"
+                order: 4
+                title: "Deportes modificados"
+                type: "flashcard"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+            challenges:
+              - id: "1eso_ud3_c01"
+                order: 1
+                title: "Pases en equipo"
+                type: "coordination"
+                difficulty: "medio"
+                goal_type: "reps"
+                goal_value: 20
+                xp: 60
+                coins: 12
+
+              - id: "1eso_ud3_c02"
+                order: 2
+                title: "Desmarque y espacios"
+                type: "tactical"
+                difficulty: "dificil"
+                goal_type: "score"
+                goal_value: 10
+                xp: 80
+                coins: 15
+
+            minigames:
+              - id: "1eso_ud3_m01"
+                order: 1
+                title: "Decisión táctica"
+                type: "tactical_decision"
+                xp: 40
+                coins: 10
+
+            boss:
+              id: "1eso_ud3_boss"
+              title: "Jefe Final: El Caos"
+              xp: 250
+              coins: 35
+
+      # ---- T2 ----
+      trimester_2:
+        name: "Aprendo a jugar"
+        narrative: "El explorador descubre los deportes. Debe aprender técnicas básicas y entender la táctica para superar nuevos desafíos."
+
+        units:
+          - id: "1eso_ud4"
+            order: 4
+            title: "Iniciación deportiva"
+            weeks: 5
+            color: "#E91E63"
+            icon: "🏀"
+            saber_basico:
+              - "baloncesto"
+              - "balonmano"
+              - "pase"
+              - "recepción"
+              - "bote"
+              - "desplazamientos"
+              - "desmarque"
+            competencias:
+              - "CE3: Resolver problemas motores"
+              - "CE4: Cooperación"
+            attribute_focus:
+              fuerza: 3
+              resistencia: 3
+              estrategia: 4
+              cooperacion: 3
+              salud: 2
+              liderazgo: 2
+            boss_name: "El Marcador"
+            total_xp: 750
+            required_xp: 450
+            tiers_app:
+              - "Rookie"
+              - "Player"
+              - "MVP"
+
+            lessons:
+              - id: "1eso_ud4_l01"
+                order: 1
+                title: "Pase y recepción"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "1eso_ud4_l02"
+                order: 2
+                title: "Bote y desplazamientos"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "1eso_ud4_l03"
+                order: 3
+                title: "Técnicas básicas"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+              - id: "1eso_ud4_l04"
+                order: 4
+                title: "Desmarque y espacios"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+            challenges:
+              - id: "1eso_ud4_c01"
+                order: 1
+                title: "Ronda de pases"
+                type: "coordination"
+                difficulty: "medio"
+                goal_type: "reps"
+                goal_value: 30
+                xp: 60
+                coins: 12
+
+              - id: "1eso_ud4_c02"
+                order: 2
+                title: "Circuito de bote"
+                type: "coordination"
+                difficulty: "dificil"
+                goal_type: "seconds"
+                goal_value: 60
+                xp: 80
+                coins: 15
+
+            minigames:
+              - id: "1eso_ud4_m01"
+                order: 1
+                title: "Simulador táctico"
+                type: "tactical_decision"
+                xp: 40
+                coins: 10
+
+            boss:
+              id: "1eso_ud4_boss"
+              title: "Jefe Final: El Marcador"
+              xp: 250
+              coins: 35
+
+          - id: "1eso_ud5"
+            order: 5
+            title: "Atletas en acción"
+            weeks: 4
+            color: "#9C27B0"
+            icon: "🏃"
+            saber_basico:
+              - "velocidad"
+              - "resistencia"
+              - "saltos"
+              - "lanzamientos"
+            competencias:
+              - "CE1: Salud"
+              - "CE3: Resolución motriz"
+            attribute_focus:
+              fuerza: 4
+              resistencia: 5
+              estrategia: 1
+              cooperacion: 1
+              salud: 4
+              liderazgo: 1
+            boss_name: "El Cronómetro"
+            total_xp: 650
+            required_xp: 380
+
+            lessons:
+              - id: "1eso_ud5_l01"
+                order: 1
+                title: "Velocidad y reacción"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "1eso_ud5_l02"
+                order: 2
+                title: "Resistencia: tu motor"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "1eso_ud5_l03"
+                order: 3
+                title: "Saltos y lanzamientos"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "1eso_ud5_c01"
+                order: 1
+                title: "Circuito fitness"
+                type: "cardio"
+                difficulty: "medio"
+                goal_type: "reps"
+                goal_value: 15
+                xp: 60
+                coins: 12
+
+              - id: "1eso_ud5_c02"
+                order: 2
+                title: "Carrera progresiva"
+                type: "cardio"
+                difficulty: "dificil"
+                goal_type: "seconds"
+                goal_value: 300
+                xp: 80
+                coins: 15
+
+              - id: "1eso_ud5_c03"
+                order: 3
+                title: "Salto horizontal"
+                type: "strength"
+                difficulty: "medio"
+                goal_type: "meters"
+                goal_value: 150
+                xp: 60
+                coins: 12
+
+            boss:
+              id: "1eso_ud5_boss"
+              title: "Jefe Final: El Cronómetro"
+              xp: 250
+              coins: 35
+
+          - id: "1eso_ud6"
+            order: 6
+            title: "Expreso lo que siento"
+            weeks: 4
+            color: "#FF5722"
+            icon: "🎭"
+            saber_basico:
+              - "expresión corporal"
+              - "emociones"
+              - "comunicación no verbal"
+              - "ritmo"
+            competencias:
+              - "CE5: Expresión corporal"
+              - "CE6: Manifestaciones culturales"
+            attribute_focus:
+              fuerza: 1
+              resistencia: 2
+              estrategia: 2
+              cooperacion: 4
+              salud: 3
+              liderazgo: 3
+            boss_name: "El Mimo"
+            total_xp: 600
+            required_xp: 350
+
+            lessons:
+              - id: "1eso_ud6_l01"
+                order: 1
+                title: "El cuerpo habla"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "1eso_ud6_l02"
+                order: 2
+                title: "Ritmo y movimiento"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "1eso_ud6_l03"
+                order: 3
+                title: "Emociones en acción"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "1eso_ud6_c01"
+                order: 1
+                title: "Secuencia rítmica"
+                type: "mobility"
+                difficulty: "medio"
+                goal_type: "reps"
+                goal_value: 8
+                xp: 60
+                coins: 12
+
+            minigames:
+              - id: "1eso_ud6_m01"
+                order: 1
+                title: "Adivina la emoción"
+                type: "puzzle"
+                xp: 30
+                coins: 8
+
+            boss:
+              id: "1eso_ud6_boss"
+              title: "Jefe Final: El Mimo (Coreografía grupal)"
+              xp: 250
+              coins: 35
+
+      # ---- T3 ----
+      trimester_3:
+        name: "Me expreso y exploro"
+        narrative: "El explorador sale al mundo exterior. Debe orientarse, descubrir otras culturas y demostrar todo lo aprendido."
+
+        units:
+          - id: "1eso_ud7"
+            order: 7
+            title: "Aventura y naturaleza"
+            weeks: 4
+            color: "#4CAF50"
+            icon: "🧭"
+            saber_basico:
+              - "orientación"
+              - "mapas"
+              - "brújula"
+              - "sostenibilidad"
+            competencias:
+              - "CE6: Interacción con el entorno"
+            attribute_focus:
+              fuerza: 2
+              resistencia: 4
+              estrategia: 4
+              cooperacion: 2
+              salud: 3
+              liderazgo: 2
+            boss_name: "El Bosque Perdido"
+            total_xp: 600
+            required_xp: 350
+
+            lessons:
+              - id: "1eso_ud7_l01"
+                order: 1
+                title: "Lectura de mapas"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "1eso_ud7_l02"
+                order: 2
+                title: "Brújula y orientación"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "1eso_ud7_l03"
+                order: 3
+                title: "Naturaleza y sostenibilidad"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "1eso_ud7_c01"
+                order: 1
+                title: "Gymkana GPS"
+                type: "steps"
+                difficulty: "dificil"
+                goal_type: "steps"
+                goal_value: 8000
+                xp: 80
+                coins: 15
+
+            minigames:
+              - id: "1eso_ud7_m01"
+                order: 1
+                title: "Brújula interactiva"
+                type: "puzzle"
+                xp: 30
+                coins: 8
+
+            boss:
+              id: "1eso_ud7_boss"
+              title: "Jefe Final: El Bosque Perdido"
+              xp: 250
+              coins: 35
+
+          - id: "1eso_ud8"
+            order: 8
+            title: "Juegos del mundo"
+            weeks: 4
+            color: "#FFC107"
+            icon: "🌍"
+            saber_basico:
+              - "interculturalidad"
+              - "juegos tradicionales"
+              - "inclusión"
+            competencias:
+              - "CE4: Interacción social"
+              - "CE6: Manifestaciones culturales"
+            attribute_focus:
+              fuerza: 2
+              resistencia: 2
+              estrategia: 2
+              cooperacion: 5
+              salud: 2
+              liderazgo: 3
+            boss_name: "El Torneo Mundial"
+            total_xp: 600
+            required_xp: 350
+
+            lessons:
+              - id: "1eso_ud8_l01"
+                order: 1
+                title: "Juegos del mundo"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "1eso_ud8_l02"
+                order: 2
+                title: "Kin-ball, Colpbol, Datchball"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "1eso_ud8_l03"
+                order: 3
+                title: "Inclusión en el deporte"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "1eso_ud8_c01"
+                order: 1
+                title: "Torneo de deportes alternativos"
+                type: "tactical"
+                difficulty: "dificil"
+                goal_type: "score"
+                goal_value: 15
+                xp: 80
+                coins: 15
+
+            boss:
+              id: "1eso_ud8_boss"
+              title: "Jefe Final: El Torneo Mundial"
+              xp: 250
+              coins: 35
+
+          - id: "1eso_ud9"
+            order: 9
+            title: "Reto final 1º ESO"
+            weeks: 3
+            color: "#F44336"
+            icon: "🏆"
+            saber_basico:
+              - "planificación"
+              - "organización"
+              - "retos cooperativos"
+            competencias:
+              - "TODAS"
+            attribute_focus:
+              fuerza: 4
+              resistencia: 4
+              estrategia: 4
+              cooperacion: 5
+              salud: 4
+              liderazgo: 5
+            boss_name: "La Supervivencia Saludable"
+            total_xp: 800
+            required_xp: 500
+            is_final: true
+
+            lessons:
+              - id: "1eso_ud9_l01"
+                order: 1
+                title: "Planifica tu reto"
+                type: "reading"
+                duration_sec: 120
+                xp: 30
+                coins: 10
+
+              - id: "1eso_ud9_l02"
+                order: 2
+                title: "Organiza tu equipo"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "1eso_ud9_c01"
+                order: 1
+                title: "Supervivencia saludable"
+                type: "cardio"
+                difficulty: "dificil"
+                goal_type: "seconds"
+                goal_value: 600
+                xp: 100
+                coins: 20
+
+              - id: "1eso_ud9_c02"
+                order: 2
+                title: "Pruebas cooperativas"
+                type: "tactical"
+                difficulty: "dificil"
+                goal_type: "score"
+                goal_value: 20
+                xp: 100
+                coins: 20
+
+            boss:
+              id: "1eso_ud9_boss"
+              title: "JEFE FINAL: La Supervivencia Saludable"
+              description: "Proyecto completo: planificar actividad, organizar retos, superar pruebas cooperativas."
+              xp: 400
+              coins: 100
+              is_final_boss: true
+
+  # ===========================================================================
+  # 2º ESO
+  # ===========================================================================
+  2_eso:
+    name: "2º ESO"
+    short: "2ESO"
+    objective: "Desarrollar autonomía física y comprensión táctica."
+    avatar_init: "rookie"
+
+    trimesters:
+      trimester_1:
+        name: "Entreno y mejoro"
+        narrative: "El atleta junior descubre el entrenamiento inteligente. Aprende a planificar, medir su rendimiento y trabajar en equipo."
+
+        units:
+          - id: "2eso_ud1"
+            order: 1
+            title: "Entreno inteligente"
+            weeks: 4
+            color: "#00BCD4"
+            icon: "📈"
+            saber_basico:
+              - "resistencia aeróbica"
+              - "fuerza básica"
+              - "flexibilidad"
+              - "recuperación"
+            competencias:
+              - "CE1: Salud y entrenamiento"
+              - "CE2: Autogestión"
+            attribute_focus:
+              fuerza: 4
+              resistencia: 5
+              estrategia: 2
+              cooperacion: 1
+              salud: 5
+              liderazgo: 1
+            boss_name: "La Fatiga"
+            total_xp: 650
+            required_xp: 380
+
+            lessons:
+              - id: "2eso_ud1_l01"
+                order: 1
+                title: "Resistencia aeróbica"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "2eso_ud1_l02"
+                order: 2
+                title: "Fuerza básica"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "2eso_ud1_l03"
+                order: 3
+                title: "Flexibilidad y recuperación"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "2eso_ud1_l04"
+                order: 4
+                title: "Test de curso"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "2eso_ud1_c01"
+                order: 1
+                title: "Test de resistencia"
+                type: "cardio"
+                difficulty: "medio"
+                goal_type: "seconds"
+                goal_value: 420
+                xp: 60
+                coins: 12
+
+              - id: "2eso_ud1_c02"
+                order: 2
+                title: "Rutina de fuerza"
+                type: "strength"
+                difficulty: "medio"
+                goal_type: "reps"
+                goal_value: 20
+                xp: 60
+                coins: 12
+
+            boss:
+              id: "2eso_ud1_boss"
+              title: "Jefe Final: La Fatiga"
+              xp: 250
+              coins: 35
+
+          - id: "2eso_ud2"
+            order: 2
+            title: "Estrategas del juego"
+            weeks: 5
+            color: "#3F51B5"
+            icon: "🧠"
+            saber_basico:
+              - "táctica"
+              - "superioridades"
+              - "comunicación"
+            competencias:
+              - "CE3: Resolución táctica"
+              - "CE4: Cooperación"
+            attribute_focus:
+              fuerza: 2
+              resistencia: 3
+              estrategia: 5
+              cooperacion: 4
+              salud: 2
+              liderazgo: 3
+            boss_name: "El Reloj"
+            total_xp: 700
+            required_xp: 400
+
+            lessons:
+              - id: "2eso_ud2_l01"
+                order: 1
+                title: "Fundamentos tácticos"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "2eso_ud2_l02"
+                order: 2
+                title: "Superioridad numérica"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "2eso_ud2_l03"
+                order: 3
+                title: "Comunicación en juego"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "2eso_ud2_c01"
+                order: 1
+                title: "Misión táctica"
+                type: "tactical"
+                difficulty: "dificil"
+                goal_type: "score"
+                goal_value: 15
+                xp: 80
+                coins: 15
+
+            minigames:
+              - id: "2eso_ud2_m01"
+                order: 1
+                title: "¿Qué harías?"
+                type: "tactical_decision"
+                xp: 40
+                coins: 10
+
+            boss:
+              id: "2eso_ud2_boss"
+              title: "Jefe Final: El Reloj"
+              xp: 250
+              coins: 35
+
+          - id: "2eso_ud3"
+            order: 3
+            title: "Reto cooperativo"
+            weeks: 4
+            color: "#009688"
+            icon: "🤝"
+            saber_basico:
+              - "liderazgo"
+              - "roles"
+              - "cohesión grupal"
+            competencias:
+              - "CE4: Interacción social"
+              - "CE5: Autorregulación"
+            attribute_focus:
+              fuerza: 2
+              resistencia: 2
+              estrategia: 3
+              cooperacion: 5
+              salud: 2
+              liderazgo: 5
+            boss_name: "El Escape Room"
+            total_xp: 600
+            required_xp: 350
+
+            lessons:
+              - id: "2eso_ud3_l01"
+                order: 1
+                title: "Roles en el equipo"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "2eso_ud3_l02"
+                order: 2
+                title: "Liderazgo deportivo"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "2eso_ud3_l03"
+                order: 3
+                title: "Trabajo en equipo"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "2eso_ud3_c01"
+                order: 1
+                title: "Escape room físico"
+                type: "tactical"
+                difficulty: "dificil"
+                goal_type: "score"
+                goal_value: 20
+                xp: 80
+                coins: 15
+
+            boss:
+              id: "2eso_ud3_boss"
+              title: "Jefe Final: El Escape Room"
+              xp: 250
+              coins: 35
+
+      trimester_2:
+        name: "Pienso el juego"
+        narrative: "El atleta profundiza en táctica, expresión y deportes alternativos."
+
+        units:
+          - id: "2eso_ud4"
+            order: 4
+            title: "Deporte y salud"
+            weeks: 4
+            color: "#4CAF50"
+            icon: "🥗"
+            saber_basico:
+              - "nutrición"
+              - "descanso"
+              - "hidratación"
+              - "prevención lesiones"
+            competencias:
+              - "CE1: Salud"
+              - "CE2: Autogestión"
+            attribute_focus:
+              fuerza: 2
+              resistencia: 3
+              estrategia: 2
+              cooperacion: 1
+              salud: 5
+              liderazgo: 1
+            boss_name: "El Mal Hábito"
+            total_xp: 600
+            required_xp: 350
+
+            lessons:
+              - id: "2eso_ud4_l01"
+                order: 1
+                title: "Nutrición deportiva"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "2eso_ud4_l02"
+                order: 2
+                title: "Descanso e hidratación"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "2eso_ud4_l03"
+                order: 3
+                title: "Prevención de lesiones"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            minigames:
+              - id: "2eso_ud4_m01"
+                order: 1
+                title: "Laboratorio nutricional"
+                type: "puzzle"
+                xp: 30
+                coins: 8
+
+            boss:
+              id: "2eso_ud4_boss"
+              title: "Jefe Final: El Mal Hábito"
+              xp: 250
+              coins: 35
+
+          - id: "2eso_ud5"
+            order: 5
+            title: "Expresión y ritmo"
+            weeks: 4
+            color: "#FF5722"
+            icon: "💃"
+            saber_basico:
+              - "danza"
+              - "percusión corporal"
+              - "improvisación"
+            competencias:
+              - "CE5: Expresión corporal"
+              - "CE6: Manifestaciones culturales"
+            attribute_focus:
+              fuerza: 2
+              resistencia: 3
+              estrategia: 2
+              cooperacion: 4
+              salud: 2
+              liderazgo: 2
+            boss_name: "El Escenario"
+            total_xp: 600
+            required_xp: 350
+
+            lessons:
+              - id: "2eso_ud5_l01"
+                order: 1
+                title: "Danza y movimiento"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "2eso_ud5_l02"
+                order: 2
+                title: "Percusión corporal"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "2eso_ud5_l03"
+                order: 3
+                title: "Improvisación"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            boss:
+              id: "2eso_ud5_boss"
+              title: "Jefe Final: El Escenario (Festival corporal)"
+              xp: 250
+              coins: 35
+
+          - id: "2eso_ud6"
+            order: 6
+            title: "Deportes alternativos"
+            weeks: 5
+            color: "#9C27B0"
+            icon: "🥏"
+            saber_basico:
+              - "ultimate"
+              - "pickleball"
+              - "tchoukball"
+              - "floorball"
+            competencias:
+              - "CE3: Resolución motriz"
+              - "CE4: Inclusión"
+            attribute_focus:
+              fuerza: 3
+              resistencia: 3
+              estrategia: 4
+              cooperacion: 4
+              salud: 2
+              liderazgo: 2
+            boss_name: "La Final Alternativa"
+            total_xp: 700
+            required_xp: 400
+
+            lessons:
+              - id: "2eso_ud6_l01"
+                order: 1
+                title: "Ultimate"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "2eso_ud6_l02"
+                order: 2
+                title: "Pickleball y Tchoukball"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "2eso_ud6_l03"
+                order: 3
+                title: "Floorball"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "2eso_ud6_c01"
+                order: 1
+                title: "Torneo express"
+                type: "tactical"
+                difficulty: "dificil"
+                goal_type: "score"
+                goal_value: 15
+                xp: 80
+                coins: 15
+
+            boss:
+              id: "2eso_ud6_boss"
+              title: "Jefe Final: La Final Alternativa"
+              xp: 250
+              coins: 35
+
+      trimester_3:
+        name: "Cuerpo y emoción"
+        narrative: "El atleta conecta cuerpo, mente y naturaleza. Prepara el torneo final."
+
+        units:
+          - id: "2eso_ud7"
+            order: 7
+            title: "Orientación y aventura"
+            weeks: 4
+            color: "#795548"
+            icon: "🗺️"
+            saber_basico:
+              - "orientación avanzada"
+              - "seguridad"
+              - "senderismo"
+            competencias:
+              - "CE6: Interacción con el entorno"
+            attribute_focus:
+              fuerza: 3
+              resistencia: 4
+              estrategia: 4
+              cooperacion: 2
+              salud: 3
+              liderazgo: 2
+            boss_name: "La Ruta Perdida"
+            total_xp: 600
+            required_xp: 350
+
+            lessons:
+              - id: "2eso_ud7_l01"
+                order: 1
+                title: "Orientación avanzada"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "2eso_ud7_l02"
+                order: 2
+                title: "Seguridad en naturaleza"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "2eso_ud7_l03"
+                order: 3
+                title: "Misiones GPS"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            boss:
+              id: "2eso_ud7_boss"
+              title: "Jefe Final: La Ruta Perdida"
+              xp: 250
+              coins: 35
+
+          - id: "2eso_ud8"
+            order: 8
+            title: "Mi cuerpo y mis emociones"
+            weeks: 4
+            color: "#E91E63"
+            icon: "❤️"
+            saber_basico:
+              - "autoestima"
+              - "estrés"
+              - "regulación emocional"
+            competencias:
+              - "CE5: Autorregulación emocional"
+            attribute_focus:
+              fuerza: 1
+              resistencia: 2
+              estrategia: 2
+              cooperacion: 3
+              salud: 5
+              liderazgo: 3
+            boss_name: "La Tormenta Interior"
+            total_xp: 550
+            required_xp: 320
+
+            lessons:
+              - id: "2eso_ud8_l01"
+                order: 1
+                title: "Autoestima y deporte"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "2eso_ud8_l02"
+                order: 2
+                title: "Manejo del estrés"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "2eso_ud8_l03"
+                order: 3
+                title: "Regulación emocional"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            boss:
+              id: "2eso_ud8_boss"
+              title: "Jefe Final: La Tormenta Interior"
+              xp: 250
+              coins: 35
+
+          - id: "2eso_ud9"
+            order: 9
+            title: "Torneo final"
+            weeks: 3
+            color: "#FFD700"
+            icon: "🏆"
+            saber_basico:
+              - "organización"
+              - "diseño de torneo"
+              - "evaluación"
+            competencias:
+              - "TODAS"
+            attribute_focus:
+              fuerza: 4
+              resistencia: 4
+              estrategia: 5
+              cooperacion: 5
+              salud: 3
+              liderazgo: 5
+            boss_name: "El Gran Torneo"
+            total_xp: 800
+            required_xp: 500
+            is_final: true
+
+            lessons:
+              - id: "2eso_ud9_l01"
+                order: 1
+                title: "Diseña tu torneo"
+                type: "reading"
+                duration_sec: 120
+                xp: 30
+                coins: 10
+
+              - id: "2eso_ud9_l02"
+                order: 2
+                title: "Organización deportiva"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "2eso_ud9_c01"
+                order: 1
+                title: "Torneo completo"
+                type: "tactical"
+                difficulty: "dificil"
+                goal_type: "score"
+                goal_value: 30
+                xp: 150
+                coins: 25
+
+            boss:
+              id: "2eso_ud9_boss"
+              title: "JEFE FINAL: El Gran Torneo"
+              xp: 400
+              coins: 100
+              is_final_boss: true
+
+  # ===========================================================================
+  # 3º ESO
+  # ===========================================================================
+  3_eso:
+    name: "3º ESO"
+    short: "3ESO"
+    objective: "Aplicación autónoma del entrenamiento y pensamiento crítico."
+    avatar_init: "amateur"
+
+    trimesters:
+      trimester_1:
+        name: "Salud y rendimiento"
+        narrative: "El atleta se convierte en científico del deporte. Analiza, planifica y optimiza su rendimiento."
+
+        units:
+          - id: "3eso_ud1"
+            order: 1
+            title: "Ciencia del entrenamiento"
+            weeks: 4
+            color: "#00BCD4"
+            icon: "🔬"
+            saber_basico:
+              - "sistemas energéticos"
+              - "frecuencia cardíaca"
+              - "zonas de entrenamiento"
+            competencias:
+              - "CE1: Salud"
+              - "CE2: Planificación"
+            attribute_focus:
+              fuerza: 3
+              resistencia: 5
+              estrategia: 4
+              cooperacion: 1
+              salud: 5
+              liderazgo: 1
+            boss_name: "El Límite"
+            total_xp: 650
+            required_xp: 380
+
+            lessons:
+              - id: "3eso_ud1_l01"
+                order: 1
+                title: "Sistemas energéticos"
+                type: "video"
+                duration_sec: 90
+                xp: 30
+                coins: 5
+
+              - id: "3eso_ud1_l02"
+                order: 2
+                title: "Zonas de entrenamiento"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "3eso_ud1_l03"
+                order: 3
+                title: "Frecuencia cardíaca avanzada"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "3eso_ud1_c01"
+                order: 1
+                title: "Entrenamiento por zonas"
+                type: "cardio"
+                difficulty: "dificil"
+                goal_type: "heart_rate"
+                goal_value: 75
+                xp: 80
+                coins: 15
+
+            boss:
+              id: "3eso_ud1_boss"
+              title: "Jefe Final: El Límite"
+              xp: 250
+              coins: 35
+
+          - id: "3eso_ud2"
+            order: 2
+            title: "Fuerza y rendimiento"
+            weeks: 4
+            color: "#F44336"
+            icon: "💪"
+            saber_basico:
+              - "fuerza funcional"
+              - "autocargas"
+              - "prevención lesiones"
+            competencias:
+              - "CE1: Salud"
+              - "CE3: Resolución motriz"
+            attribute_focus:
+              fuerza: 5
+              resistencia: 3
+              estrategia: 3
+              cooperacion: 1
+              salud: 4
+              liderazgo: 1
+            boss_name: "La Sobrecarga"
+            total_xp: 600
+            required_xp: 350
+
+            lessons:
+              - id: "3eso_ud2_l01"
+                order: 1
+                title: "Fuerza funcional"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "3eso_ud2_l02"
+                order: 2
+                title: "Autocargas"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "3eso_ud2_l03"
+                order: 3
+                title: "Prevención de lesiones"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "3eso_ud2_c01"
+                order: 1
+                title: "Rutina de autocargas"
+                type: "strength"
+                difficulty: "medio"
+                goal_type: "reps"
+                goal_value: 25
+                xp: 60
+                coins: 12
+
+              - id: "3eso_ud2_c02"
+                order: 2
+                title: "HIIT funcional"
+                type: "cardio"
+                difficulty: "dificil"
+                goal_type: "seconds"
+                goal_value: 300
+                xp: 80
+                coins: 15
+
+            boss:
+              id: "3eso_ud2_boss"
+              title: "Jefe Final: La Sobrecarga"
+              xp: 250
+              coins: 35
+
+          - id: "3eso_ud3"
+            order: 3
+            title: "Nutrición real"
+            weeks: 4
+            color: "#4CAF50"
+            icon: "🥑"
+            saber_basico:
+              - "macronutrientes"
+              - "marketing engañoso"
+              - "suplementos"
+            competencias:
+              - "CE1: Salud"
+              - "CE2: Pensamiento crítico"
+            attribute_focus:
+              fuerza: 2
+              resistencia: 3
+              estrategia: 4
+              cooperacion: 1
+              salud: 5
+              liderazgo: 1
+            boss_name: "El Fake Fitness"
+            total_xp: 600
+            required_xp: 350
+
+            lessons:
+              - id: "3eso_ud3_l01"
+                order: 1
+                title: "Macronutrientes"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "3eso_ud3_l02"
+                order: 2
+                title: "Marketing engañoso"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "3eso_ud3_l03"
+                order: 3
+                title: "Suplementos: mito o realidad"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "3eso_ud3_c01"
+                order: 1
+                title: "Detecta el fake"
+                type: "tactical"
+                difficulty: "dificil"
+                goal_type: "score"
+                goal_value: 10
+                xp: 60
+                coins: 12
+
+            boss:
+              id: "3eso_ud3_boss"
+              title: "Jefe Final: El Fake Fitness"
+              xp: 250
+              coins: 35
+
+      trimester_2:
+        name: "Estrategia deportiva"
+        narrative: "El atleta analiza el juego, lidera equipos y crea composiciones."
+
+        units:
+          - id: "3eso_ud4"
+            order: 4
+            title: "Deporte táctico"
+            weeks: 5
+            color: "#3F51B5"
+            icon: "♟️"
+            saber_basico:
+              - "baloncesto"
+              - "balonmano"
+              - "voleibol"
+              - "análisis táctico"
+              - "roles"
+              - "estrategias"
+            competencias:
+              - "CE3: Resolución táctica"
+              - "CE4: Cooperación"
+            attribute_focus:
+              fuerza: 3
+              resistencia: 3
+              estrategia: 5
+              cooperacion: 4
+              salud: 2
+              liderazgo: 3
+            boss_name: "El Analista"
+            total_xp: 750
+            required_xp: 450
+
+            lessons:
+              - id: "3eso_ud4_l01"
+                order: 1
+                title: "Análisis táctico"
+                type: "video"
+                duration_sec: 90
+                xp: 30
+                coins: 5
+
+              - id: "3eso_ud4_l02"
+                order: 2
+                title: "Roles y estrategias"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "3eso_ud4_l03"
+                order: 3
+                title: "Sistemas de juego"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "3eso_ud4_c01"
+                order: 1
+                title: "Editor de jugadas"
+                type: "tactical"
+                difficulty: "dificil"
+                goal_type: "score"
+                goal_value: 20
+                xp: 80
+                coins: 15
+
+            minigames:
+              - id: "3eso_ud4_m01"
+                order: 1
+                title: "Simulador táctico"
+                type: "tactical_decision"
+                xp: 40
+                coins: 10
+
+            boss:
+              id: "3eso_ud4_boss"
+              title: "Jefe Final: El Analista"
+              xp: 300
+              coins: 40
+
+          - id: "3eso_ud5"
+            order: 5
+            title: "Liderazgo deportivo"
+            weeks: 4
+            color: "#FF9800"
+            icon: "🎯"
+            saber_basico:
+              - "arbitraje"
+              - "liderazgo"
+              - "gestión de grupos"
+            competencias:
+              - "CE4: Interacción social"
+              - "CE5: Autorregulación"
+            attribute_focus:
+              fuerza: 2
+              resistencia: 2
+              estrategia: 4
+              cooperacion: 4
+              salud: 2
+              liderazgo: 5
+            boss_name: "El Entrenador"
+            total_xp: 650
+            required_xp: 380
+
+            lessons:
+              - id: "3eso_ud5_l01"
+                order: 1
+                title: "Arbitraje y fair play"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "3eso_ud5_l02"
+                order: 2
+                title: "Liderazgo en equipo"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "3eso_ud5_l03"
+                order: 3
+                title: "Gestión de grupos"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            boss:
+              id: "3eso_ud5_boss"
+              title: "Jefe Final: El Entrenador"
+              xp: 250
+              coins: 35
+
+          - id: "3eso_ud6"
+            order: 6
+            title: "Expresión avanzada"
+            weeks: 4
+            color: "#E91E63"
+            icon: "🎭"
+            saber_basico:
+              - "teatro físico"
+              - "composición escénica"
+              - "narrativa corporal"
+            competencias:
+              - "CE5: Expresión corporal"
+              - "CE6: Manifestaciones culturales"
+            attribute_focus:
+              fuerza: 2
+              resistencia: 2
+              estrategia: 3
+              cooperacion: 4
+              salud: 2
+              liderazgo: 3
+            boss_name: "El Escenario"
+            total_xp: 600
+            required_xp: 350
+
+            lessons:
+              - id: "3eso_ud6_l01"
+                order: 1
+                title: "Teatro físico"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "3eso_ud6_l02"
+                order: 2
+                title: "Composición escénica"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "3eso_ud6_l03"
+                order: 3
+                title: "Narrativa corporal"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            boss:
+              id: "3eso_ud6_boss"
+              title: "Jefe Final: El Escenario"
+              xp: 250
+              coins: 35
+
+      trimester_3:
+        name: "Aventura y entorno"
+        narrative: "El atleta se enfrenta a la naturaleza, a su propio reto fitness y a las Olimpiadas EF."
+
+        units:
+          - id: "3eso_ud7"
+            order: 7
+            title: "Deporte en la naturaleza"
+            weeks: 4
+            color: "#795548"
+            icon: "🏔️"
+            saber_basico:
+              - "supervivencia"
+              - "primeros auxilios"
+              - "orientación compleja"
+            competencias:
+              - "CE6: Interacción con el entorno"
+            attribute_focus:
+              fuerza: 3
+              resistencia: 5
+              estrategia: 4
+              cooperacion: 3
+              salud: 3
+              liderazgo: 3
+            boss_name: "La Supervivencia"
+            total_xp: 700
+            required_xp: 400
+
+            lessons:
+              - id: "3eso_ud7_l01"
+                order: 1
+                title: "Supervivencia básica"
+                type: "video"
+                duration_sec: 90
+                xp: 30
+                coins: 5
+
+              - id: "3eso_ud7_l02"
+                order: 2
+                title: "Primeros auxilios"
+                type: "reading"
+                duration_sec: 120
+                xp: 30
+                coins: 5
+
+              - id: "3eso_ud7_l03"
+                order: 3
+                title: "Orientación compleja"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            minigames:
+              - id: "3eso_ud7_m01"
+                order: 1
+                title: "Decisiones críticas"
+                type: "tactical_decision"
+                xp: 40
+                coins: 10
+
+            boss:
+              id: "3eso_ud7_boss"
+              title: "Jefe Final: La Supervivencia"
+              xp: 300
+              coins: 40
+
+          - id: "3eso_ud8"
+            order: 8
+            title: "Reto fitness"
+            weeks: 5
+            color: "#FF5722"
+            icon: "🔥"
+            saber_basico:
+              - "planificación"
+              - "entrenamiento personal"
+              - "seguimiento"
+            competencias:
+              - "CE1: Salud"
+              - "CE2: Autonomía"
+            attribute_focus:
+              fuerza: 5
+              resistencia: 5
+              estrategia: 3
+              cooperacion: 2
+              salud: 5
+              liderazgo: 3
+            boss_name: "La Maratón Personal"
+            total_xp: 800
+            required_xp: 500
+
+            lessons:
+              - id: "3eso_ud8_l01"
+                order: 1
+                title: "Plan 8 semanas"
+                type: "reading"
+                duration_sec: 120
+                xp: 30
+                coins: 10
+
+              - id: "3eso_ud8_l02"
+                order: 2
+                title: "Seguimiento y ajustes"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "3eso_ud8_c01"
+                order: 1
+                title: "Semana 1-2: Base"
+                type: "cardio"
+                difficulty: "medio"
+                goal_type: "reps"
+                goal_value: 20
+                xp: 60
+                coins: 12
+
+              - id: "3eso_ud8_c02"
+                order: 2
+                title: "Semana 3-5: Progresión"
+                type: "strength"
+                difficulty: "dificil"
+                goal_type: "reps"
+                goal_value: 30
+                xp: 80
+                coins: 15
+
+              - id: "3eso_ud8_c03"
+                order: 3
+                title: "Semana 6-8: Reto máximo"
+                type: "cardio"
+                difficulty: "dificil"
+                goal_type: "seconds"
+                goal_value: 600
+                xp: 100
+                coins: 20
+
+            boss:
+              id: "3eso_ud8_boss"
+              title: "Jefe Final: La Maratón Personal"
+              xp: 300
+              coins: 50
+
+          - id: "3eso_ud9"
+            order: 9
+            title: "Olimpiadas EF"
+            weeks: 3
+            color: "#FFD700"
+            icon: "🥇"
+            saber_basico:
+              - "competición"
+              - "trabajo en equipo"
+              - "evaluación"
+            competencias:
+              - "TODAS"
+            attribute_focus:
+              fuerza: 5
+              resistencia: 5
+              estrategia: 5
+              cooperacion: 5
+              salud: 4
+              liderazgo: 5
+            boss_name: "La Corona de Laurel"
+            total_xp: 900
+            required_xp: 600
+            is_final: true
+
+            lessons:
+              - id: "3eso_ud9_l01"
+                order: 1
+                title: "Preparación olímpica"
+                type: "reading"
+                duration_sec: 120
+                xp: 30
+                coins: 10
+
+            challenges:
+              - id: "3eso_ud9_c01"
+                order: 1
+                title: "Competición gamificada"
+                type: "tactical"
+                difficulty: "dificil"
+                goal_type: "score"
+                goal_value: 50
+                xp: 150
+                coins: 30
+
+            boss:
+              id: "3eso_ud9_boss"
+              title: "JEFE FINAL: La Corona de Laurel"
+              xp: 500
+              coins: 150
+              is_final_boss: true
+
+  # ===========================================================================
+  # 4º ESO
+  # ===========================================================================
+  4_eso:
+    name: "4º ESO"
+    short: "4ESO"
+    objective: "Autonomía total y transferencia a la vida adulta."
+    avatar_init: "competidor"
+
+    trimesters:
+      trimester_1:
+        name: "Diseño mi salud"
+        narrative: "El atleta se convierte en su propio entrenador. Planifica, analiza y ejecuta su salud integral."
+
+        units:
+          - id: "4eso_ud1"
+            order: 1
+            title: "Diseño mi entrenamiento"
+            weeks: 4
+            color: "#00BCD4"
+            icon: "📋"
+            saber_basico:
+              - "planificación"
+              - "periodización"
+              - "objetivos SMART"
+            competencias:
+              - "CE1: Salud"
+              - "CE2: Autogestión total"
+            attribute_focus:
+              fuerza: 4
+              resistencia: 4
+              estrategia: 5
+              cooperacion: 1
+              salud: 5
+              liderazgo: 2
+            boss_name: "El Planificador"
+            total_xp: 650
+            required_xp: 380
+
+            lessons:
+              - id: "4eso_ud1_l01"
+                order: 1
+                title: "Planificación del entrenamiento"
+                type: "video"
+                duration_sec: 90
+                xp: 30
+                coins: 5
+
+              - id: "4eso_ud1_l02"
+                order: 2
+                title: "Periodización"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "4eso_ud1_l03"
+                order: 3
+                title: "Objetivos SMART"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "4eso_ud1_c01"
+                order: 1
+                title: "Diseña tu plan"
+                type: "tactical"
+                difficulty: "dificil"
+                goal_type: "score"
+                goal_value: 15
+                xp: 80
+                coins: 15
+
+            boss:
+              id: "4eso_ud1_boss"
+              title: "Jefe Final: El Planificador"
+              xp: 250
+              coins: 35
+
+          - id: "4eso_ud2"
+            order: 2
+            title: "Salud y sociedad"
+            weeks: 4
+            color: "#9C27B0"
+            icon: "🏛️"
+            saber_basico:
+              - "dopaje"
+              - "redes sociales"
+              - "imagen corporal"
+              - "presión estética"
+            competencias:
+              - "CE1: Salud crítica"
+              - "CE2: Pensamiento crítico"
+            attribute_focus:
+              fuerza: 1
+              resistencia: 1
+              estrategia: 5
+              cooperacion: 3
+              salud: 5
+              liderazgo: 3
+            boss_name: "La Presión Social"
+            total_xp: 600
+            required_xp: 350
+
+            lessons:
+              - id: "4eso_ud2_l01"
+                order: 1
+                title: "Dopaje y deporte"
+                type: "video"
+                duration_sec: 90
+                xp: 30
+                coins: 5
+
+              - id: "4eso_ud2_l02"
+                order: 2
+                title: "Redes sociales e imagen"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "4eso_ud2_l03"
+                order: 3
+                title: "Presión estética"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            boss:
+              id: "4eso_ud2_boss"
+              title: "Jefe Final: La Presión Social"
+              xp: 250
+              coins: 35
+
+          - id: "4eso_ud3"
+            order: 3
+            title: "Alto rendimiento"
+            weeks: 4
+            color: "#F44336"
+            icon: "⚡"
+            saber_basico:
+              - "HIIT"
+              - "fuerza avanzada"
+              - "recuperación"
+            competencias:
+              - "CE1: Rendimiento"
+              - "CE3: Ejecución avanzada"
+            attribute_focus:
+              fuerza: 5
+              resistencia: 5
+              estrategia: 3
+              cooperacion: 1
+              salud: 4
+              liderazgo: 1
+            boss_name: "El Sprint Final"
+            total_xp: 650
+            required_xp: 380
+
+            lessons:
+              - id: "4eso_ud3_l01"
+                order: 1
+                title: "HIIT"
+                type: "video"
+                duration_sec: 60
+                xp: 25
+                coins: 5
+
+              - id: "4eso_ud3_l02"
+                order: 2
+                title: "Fuerza avanzada"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "4eso_ud3_l03"
+                order: 3
+                title: "Recuperación"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "4eso_ud3_c01"
+                order: 1
+                title: "Sesión HIIT"
+                type: "cardio"
+                difficulty: "dificil"
+                goal_type: "seconds"
+                goal_value: 300
+                xp: 80
+                coins: 15
+
+              - id: "4eso_ud3_c02"
+                order: 2
+                title: "Fuerza avanzada"
+                type: "strength"
+                difficulty: "dificil"
+                goal_type: "reps"
+                goal_value: 30
+                xp: 80
+                coins: 15
+
+            boss:
+              id: "4eso_ud3_boss"
+              title: "Jefe Final: El Sprint Final"
+              xp: 300
+              coins: 40
+
+      trimester_2:
+        name: "Deporte y sociedad"
+        narrative: "El atleta organiza eventos, promueve la inclusión y crea contenido."
+
+        units:
+          - id: "4eso_ud4"
+            order: 4
+            title: "Gestión de eventos"
+            weeks: 5
+            color: "#FF9800"
+            icon: "📅"
+            saber_basico:
+              - "organización"
+              - "gestión"
+              - "evaluación de eventos"
+            competencias:
+              - "CE2: Autogestión"
+              - "CE4: Organización social"
+            attribute_focus:
+              fuerza: 2
+              resistencia: 2
+              estrategia: 5
+              cooperacion: 5
+              salud: 2
+              liderazgo: 5
+            boss_name: "El Evento"
+            total_xp: 750
+            required_xp: 450
+
+            lessons:
+              - id: "4eso_ud4_l01"
+                order: 1
+                title: "Organización de eventos"
+                type: "video"
+                duration_sec: 90
+                xp: 30
+                coins: 5
+
+              - id: "4eso_ud4_l02"
+                order: 2
+                title: "Gestión de recursos"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "4eso_ud4_l03"
+                order: 3
+                title: "Evaluación post-evento"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "4eso_ud4_c01"
+                order: 1
+                title: "Organiza tu torneo"
+                type: "tactical"
+                difficulty: "dificil"
+                goal_type: "score"
+                goal_value: 25
+                xp: 100
+                coins: 20
+
+            boss:
+              id: "4eso_ud4_boss"
+              title: "Jefe Final: El Evento"
+              xp: 300
+              coins: 40
+
+          - id: "4eso_ud5"
+            order: 5
+            title: "Deporte e inclusión"
+            weeks: 4
+            color: "#4CAF50"
+            icon: "♿"
+            saber_basico:
+              - "deporte adaptado"
+              - "igualdad"
+              - "accesibilidad"
+            competencias:
+              - "CE4: Inclusión"
+              - "CE6: Sociedad"
+            attribute_focus:
+              fuerza: 2
+              resistencia: 2
+              estrategia: 3
+              cooperacion: 5
+              salud: 3
+              liderazgo: 4
+            boss_name: "La Barrera"
+            total_xp: 600
+            required_xp: 350
+
+            lessons:
+              - id: "4eso_ud5_l01"
+                order: 1
+                title: "Deporte adaptado"
+                type: "video"
+                duration_sec: 90
+                xp: 30
+                coins: 5
+
+              - id: "4eso_ud5_l02"
+                order: 2
+                title: "Igualdad en el deporte"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "4eso_ud5_l03"
+                order: 3
+                title: "Accesibilidad"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            boss:
+              id: "4eso_ud5_boss"
+              title: "Jefe Final: La Barrera"
+              xp: 250
+              coins: 35
+
+          - id: "4eso_ud6"
+            order: 6
+            title: "Expresión y creación"
+            weeks: 4
+            color: "#FF5722"
+            icon: "🎬"
+            saber_basico:
+              - "producción audiovisual"
+              - "creación corporal"
+              - "edición"
+            competencias:
+              - "CE5: Expresión"
+              - "CE6: Creación cultural"
+            attribute_focus:
+              fuerza: 1
+              resistencia: 2
+              estrategia: 4
+              cooperacion: 4
+              salud: 2
+              liderazgo: 3
+            boss_name: "El Director"
+            total_xp: 650
+            required_xp: 380
+
+            lessons:
+              - id: "4eso_ud6_l01"
+                order: 1
+                title: "Producción audiovisual"
+                type: "video"
+                duration_sec: 90
+                xp: 30
+                coins: 5
+
+              - id: "4eso_ud6_l02"
+                order: 2
+                title: "Creación de contenido"
+                type: "reading"
+                duration_sec: 90
+                xp: 25
+                coins: 5
+
+              - id: "4eso_ud6_l03"
+                order: 3
+                title: "Edición y presentación"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            boss:
+              id: "4eso_ud6_boss"
+              title: "Jefe Final: El Director"
+              xp: 300
+              coins: 40
+
+      trimester_3:
+        name: "Mi vida activa"
+        narrative: "El atleta culmina su viaje con proyectos reales para la vida adulta."
+
+        units:
+          - id: "4eso_ud7"
+            order: 7
+            title: "Aventura extrema"
+            weeks: 4
+            color: "#795548"
+            icon: "🧗"
+            saber_basico:
+              - "orientación avanzada"
+              - "supervivencia"
+              - "trabajo en equipo extremo"
+            competencias:
+              - "CE6: Interacción con el entorno"
+            attribute_focus:
+              fuerza: 4
+              resistencia: 5
+              estrategia: 5
+              cooperacion: 4
+              salud: 3
+              liderazgo: 4
+            boss_name: "La Expedición"
+            total_xp: 700
+            required_xp: 400
+
+            lessons:
+              - id: "4eso_ud7_l01"
+                order: 1
+                title: "Orientación avanzada"
+                type: "video"
+                duration_sec: 90
+                xp: 30
+                coins: 5
+
+              - id: "4eso_ud7_l02"
+                order: 2
+                title: "Supervivencia extrema"
+                type: "reading"
+                duration_sec: 120
+                xp: 30
+                coins: 5
+
+              - id: "4eso_ud7_l03"
+                order: 3
+                title: "Trabajo en equipo extremo"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "4eso_ud7_c01"
+                order: 1
+                title: "Expedición"
+                type: "steps"
+                difficulty: "dificil"
+                goal_type: "steps"
+                goal_value: 12000
+                xp: 100
+                coins: 20
+
+            boss:
+              id: "4eso_ud7_boss"
+              title: "Jefe Final: La Expedición"
+              xp: 300
+              coins: 40
+
+          - id: "4eso_ud8"
+            order: 8
+            title: "Mi vida activa"
+            weeks: 4
+            color: "#00BCD4"
+            icon: "🌟"
+            saber_basico:
+              - "plan de vida"
+              - "rutinas"
+              - "hábitos"
+              - "seguimiento"
+            competencias:
+              - "CE1: Salud lifelong"
+              - "CE2: Autonomía total"
+            attribute_focus:
+              fuerza: 4
+              resistencia: 4
+              estrategia: 4
+              cooperacion: 3
+              salud: 5
+              liderazgo: 4
+            boss_name: "El Futuro"
+            total_xp: 750
+            required_xp: 450
+
+            lessons:
+              - id: "4eso_ud8_l01"
+                order: 1
+                title: "Plan de vida saludable"
+                type: "reading"
+                duration_sec: 120
+                xp: 30
+                coins: 10
+
+              - id: "4eso_ud8_l02"
+                order: 2
+                title: "Rutinas sostenibles"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "4eso_ud8_c01"
+                order: 1
+                title: "Crea tu rutina"
+                type: "tactical"
+                difficulty: "dificil"
+                goal_type: "score"
+                goal_value: 20
+                xp: 100
+                coins: 20
+
+            boss:
+              id: "4eso_ud8_boss"
+              title: "Jefe Final: El Futuro"
+              xp: 300
+              coins: 50
+
+          - id: "4eso_ud9"
+            order: 9
+            title: "Proyecto final ESO"
+            weeks: 4
+            color: "#FFD700"
+            icon: "👑"
+            saber_basico:
+              - "integración total"
+              - "diseño"
+              - "ejecución"
+              - "evaluación"
+              - "presentación"
+            competencias:
+              - "TODAS"
+            attribute_focus:
+              fuerza: 5
+              resistencia: 5
+              estrategia: 5
+              cooperacion: 5
+              salud: 5
+              liderazgo: 5
+            boss_name: "El Legado"
+            total_xp: 1200
+            required_xp: 800
+            is_final: true
+
+            lessons:
+              - id: "4eso_ud9_l01"
+                order: 1
+                title: "Diseña tu proyecto"
+                type: "reading"
+                duration_sec: 180
+                xp: 50
+                coins: 15
+
+              - id: "4eso_ud9_l02"
+                order: 2
+                title: "Ejecuta y evalúa"
+                type: "quiz"
+                duration_sec: 60
+                xp: 35
+                coins: 5
+
+            challenges:
+              - id: "4eso_ud9_c01"
+                order: 1
+                title: "Proyecto físico integral"
+                type: "tactical"
+                difficulty: "dificil"
+                goal_type: "score"
+                goal_value: 50
+                xp: 200
+                coins: 40
+
+            boss:
+              id: "4eso_ud9_boss"
+              title: "JEFE FINAL: El Legado — Proyecto Final ESO"
+              description: "Diseñar, ejecutar, evaluar y presentar un proyecto físico integral que demuestre TODO lo aprendido en la etapa."
+              xp: 600
+              coins: 200
+              is_final_boss: true
+
+# =============================================================================
+# ACHIEVEMENTS (Logros desbloqueables)
+# =============================================================================
+achievements:
+  - id: "first_lesson"
+    title: "Primer paso"
+    description: "Completa tu primera lección"
+    category: "units"
+    rarity: "comun"
+    condition:
+      type: "lessons_completed"
+      target: 1
+    xp_reward: 50
+    coin_reward: 10
+
+  - id: "first_boss"
+    title: "Cazador de jefes"
+    description: "Derrota a tu primer jefe final"
+    category: "units"
+    rarity: "raro"
+    condition:
+      type: "bosses_defeated"
+      target: 1
+    xp_reward: 150
+    coin_reward: 25
+
+  - id: "streak_7"
+    title: "Racha semanal"
+    description: "7 días consecutivos de actividad"
+    category: "streak"
+    rarity: "raro"
+    condition:
+      type: "streak_reach"
+      target: 7
+    xp_reward: 200
+    coin_reward: 50
+
+  - id: "streak_30"
+    title: "Mes imparable"
+    description: "30 días consecutivos de actividad"
+    category: "streak"
+    rarity: "epico"
+    condition:
+      type: "streak_reach"
+      target: 30
+    xp_reward: 500
+    coin_reward: 150
+
+  - id: "attribute_max"
+    title: "Maestro"
+    description: "Alcanza 100 en cualquier atributo"
+    category: "attributes"
+    rarity: "legendario"
+    condition:
+      type: "attribute_reach"
+      target: 100
+    xp_reward: 1000
+    coin_reward: 300
+
+  - id: "unit_complete_1eso"
+    title: "Explorador consumado"
+    description: "Completa todas las unidades de 1º ESO"
+    category: "units"
+    rarity: "epico"
+    condition:
+      type: "course_complete"
+      target: 1
+    xp_reward: 500
+    coin_reward: 100
+
+  - id: "unit_complete_2eso"
+    title: "Atleta confirmado"
+    description: "Completa todas las unidades de 2º ESO"
+    category: "units"
+    rarity: "epico"
+    condition:
+      type: "course_complete"
+      target: 2
+    xp_reward: 500
+    coin_reward: 100
+
+  - id: "unit_complete_3eso"
+    title: "Competidor elite"
+    description: "Completa todas las unidades de 3º ESO"
+    category: "units"
+    rarity: "epico"
+    condition:
+      type: "course_complete"
+      target: 3
+    xp_reward: 500
+    coin_reward: 100
+
+  - id: "unit_complete_4eso"
+    title: "Leyenda EF"
+    description: "Completa todas las unidades de 4º ESO"
+    category: "units"
+    rarity: "legendario"
+    condition:
+      type: "course_complete"
+      target: 4
+    xp_reward: 1000
+    coin_reward: 300
+
+  - id: "all_courses"
+    title: "Maestro de la Educación Física"
+    description: "Completa los 4 cursos de la ESO"
+    category: "special"
+    rarity: "legendario"
+    condition:
+      type: "all_courses_complete"
+      target: 4
+    xp_reward: 5000
+    coin_reward: 1000
+
+  - id: "three_stars_all"
+    title: "Perfeccionista"
+    description: "Consigue 3 estrellas en todos los retos de una unidad"
+    category: "special"
+    rarity: "epico"
+    condition:
+      type: "challenges_perfect"
+      target: 1
+    xp_reward: 300
+    coin_reward: 75
+
+  - id: "steps_100k"
+    title: "Caminante incansable"
+    description: "Acumula 100.000 pasos totales"
+    category: "special"
+    rarity: "raro"
+    condition:
+      type: "total_steps"
+      target: 100000
+    xp_reward: 300
+    coin_reward: 50
+
+# =============================================================================
+# SHOP ITEMS (Tienda de personalización)
+# =============================================================================
+shop_items:
+  outfits:
+    - id: "outfit_default"
+      name: "Equipo básico"
+      tier: "rookie"
+      price: 0
+      description: "El look inicial de todo explorador"
+
+    - id: "outfit_runner"
+      name: "Equipo runner"
+      tier: "amateur"
+      price: 200
+      description: "Estilo atleta en movimiento"
+
+    - id: "outfit_basket"
+      name: "Equipo baloncesto"
+      tier: "competidor"
+      price: 500
+      description: "Look de leyenda del basket"
+
+    - id: "outfit_capitan"
+      name: "Capitán"
+      tier: "capitan"
+      price: 1000
+      description: "Impresiona a tu equipo"
+
+    - id: "outfit_elite"
+      name: "Equipo elite"
+      tier: "elite"
+      price: 2500
+      description: "Solo los mejores lo tienen"
+
+  accessories:
+    - id: "acc_headband"
+      name: "Cinta deportiva"
+      tier: "rookie"
+      price: 100
+
+    - id: "acc_watch"
+      name: "Reloj deportivo"
+      tier: "amateur"
+      price: 300
+
+    - id: "acc_sunglasses"
+      name: "Gafas de sol"
+      tier: "competidor"
+      price: 600
+
+    - id: "acc_crown"
+      name: "Corona de laurel"
+      tier: "capitan"
+      price: 1500
+
+  powerups:
+    - id: "pw_x2"
+      name: "XP doble (24h)"
+      tier: "amateur"
+      price: 200
+      description: "Duplica el XP durante 24 horas"
+
+    - id: "pw_streak_freeze"
+      name: "Congela racha"
+      tier: "rookie"
+      price: 100
+      description: "Mantén tu racha si olvidas un día"
+
+    - id: "pw_extra_time"
+      name: "Tiempo extra"
+      tier: "competidor"
+      price: 300
+      description: "+30 segundos en retos cronometrados"

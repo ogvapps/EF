@@ -1,0 +1,30 @@
+# Flutter
+.dart_tool/
+.packages
+build/
+*.iml
+.idea/
+.metadata
+.flutter-plugins
+.flutter-plugins-dependencies
+*.tmp
+
+# Firebase
+service-account.json
+.firebaserc
+firebase.json
+
+# Environment
+.env
+.env.local
+.env.production
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE & Tools
+.vscode/
+opencode.json
+*.swp
+*.swo

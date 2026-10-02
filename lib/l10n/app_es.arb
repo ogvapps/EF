@@ -1,0 +1,65 @@
+{
+  "@@locale": "es",
+  "appTitle": "EF Quest",
+  "helloUser": "Hola, {name}",
+  "@helloUser": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "tusUnidades": "Tus unidades",
+  "racha": "Racha",
+  "retoDiario": "Reto diario",
+  "sinConexion": "Sin conexión",
+  "explorador": "Explorador",
+  "errorCargar": "Error al cargar los datos",
+  "reintentar": "Reintentar",
+  "noUnidades": "No hay unidades disponibles",
+  "empezar": "¡Empezar!",
+  "completar": "Completar",
+  "guardar": "Guardar",
+  "cancelar": "Cancelar",
+  "cerrar": "Cerrar",
+  "iniciarSesion": "Iniciar sesión",
+  "registrarse": "Registrarse",
+  "correo": "Correo electrónico",
+  "contrasena": "Contraseña",
+  "nombre": "Nombre",
+  "curso": "Curso",
+  "nivel": "Nv.{level}",
+  "@nivel": {
+    "placeholders": {
+      "level": {"type": "int"}
+    }
+  },
+  "xpInLevel": "{xp}/{max} XP",
+  "@xpInLevel": {
+    "placeholders": {
+      "xp": {"type": "int"},
+      "max": {"type": "int"}
+    }
+  },
+  "monedas": "{coins} monedas",
+  "@monedas": {
+    "placeholders": {
+      "coins": {"type": "int"}
+    }
+  },
+  "diasRacha": "{streak} días",
+  "@diasRacha": {
+    "placeholders": {
+      "streak": {"type": "int"}
+    }
+  },
+  "progreso": "Progreso",
+  "avatar": "Avatar",
+  "mas": "Más",
+  "inicio": "Inicio",
+  "perfil": "Perfil",
+  "logros": "Logros",
+  "tienda": "Tienda",
+  "inventario": "Inventario",
+  "ranking": "Ranking",
+  "ajustes": "Ajustes",
+  "panelDocente": "Panel docente"
+}

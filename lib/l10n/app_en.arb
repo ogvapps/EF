@@ -1,0 +1,65 @@
+{
+  "@@locale": "en",
+  "appTitle": "EF Quest",
+  "helloUser": "Hello, {name}",
+  "@helloUser": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "tusUnidades": "Your Units",
+  "racha": "Streak",
+  "retoDiario": "Daily Challenge",
+  "sinConexion": "No Connection",
+  "explorador": "Explorer",
+  "errorCargar": "Error loading data",
+  "reintentar": "Retry",
+  "noUnidades": "No units available",
+  "empezar": "Start!",
+  "completar": "Complete",
+  "guardar": "Save",
+  "cancelar": "Cancel",
+  "cerrar": "Close",
+  "iniciarSesion": "Log In",
+  "registrarse": "Sign Up",
+  "correo": "Email",
+  "contrasena": "Password",
+  "nombre": "Name",
+  "curso": "Course",
+  "nivel": "Lv.{level}",
+  "@nivel": {
+    "placeholders": {
+      "level": {"type": "int"}
+    }
+  },
+  "xpInLevel": "{xp}/{max} XP",
+  "@xpInLevel": {
+    "placeholders": {
+      "xp": {"type": "int"},
+      "max": {"type": "int"}
+    }
+  },
+  "monedas": "{coins} coins",
+  "@monedas": {
+    "placeholders": {
+      "coins": {"type": "int"}
+    }
+  },
+  "diasRacha": "{streak} days",
+  "@diasRacha": {
+    "placeholders": {
+      "streak": {"type": "int"}
+    }
+  },
+  "progreso": "Progress",
+  "avatar": "Avatar",
+  "mas": "More",
+  "inicio": "Home",
+  "perfil": "Profile",
+  "logros": "Achievements",
+  "tienda": "Shop",
+  "inventario": "Inventory",
+  "ranking": "Leaderboard",
+  "ajustes": "Settings",
+  "panelDocente": "Teacher Panel"
+}
